@@ -1,0 +1,1257 @@
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tool Tạo Video Hàng Loạt Trên Google Flow + Tặng Chatbot MV | TIENKHANH.ACADEMY</title>
+  <meta name="description" content="Tự động hóa toàn diện quy trình làm MV ca nhạc AI. Chatbot phân tích ca từ lên prompt điện ảnh, Tool tự động tạo 50 clip 8s trong Google Flow chỉ với 1 click.">
+  <meta property="og:title" content="Tool Tạo Video Hàng Loạt Trên Flow + Tặng Chatbot MV | Tiến Khanh AI">
+  <meta property="og:description" content="Giải pháp tạo MV ca nhạc AI tự động: 50 clip 8s trong vài phút. Giá ưu đãi chỉ 369.000đ.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#050b14">
+
+  <!-- Google Fonts: Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#050b14',
+            navyCard: '#082230',
+            tealDeep: '#063042',
+            gold: '#eab308',
+            goldBright: '#facc15',
+            goldDark: '#ca8a04',
+            silver: '#94a3b8',
+            silverLight: '#cbd5e1'
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --navy: #050b14;
+      --teal: #082230;
+      --gold: #eab308;
+      --gold-bright: #facc15;
+      --gold-dark: #ca8a04;
+      --gold-gradient: linear-gradient(135deg, #facc15 0%, #eab308 50%, #ca8a04 100%);
+    }
+
+    body {
+      background-color: var(--navy);
+      background-image: radial-gradient(circle at 50% 0%, #0c3349 0%, #050b14 70%);
+      color: #ffffff;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Dot Grid Background Pattern */
+    .bg-dot-grid {
+      background-image: radial-gradient(rgba(234, 179, 8, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Glassmorphism Card Design */
+    .glass-card {
+      background: rgba(8, 34, 48, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(234, 179, 8, 0.22);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-card-highlight {
+      background: rgba(8, 34, 48, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(250, 204, 21, 0.55);
+      box-shadow: 0 0 35px rgba(250, 204, 21, 0.18);
+    }
+
+    /* Gold Metallic Gradient Buttons */
+    .btn-gold {
+      background: var(--gold-gradient);
+      color: #050b14;
+      font-weight: 800;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 18px rgba(234, 179, 8, 0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(250, 204, 21, 0.6);
+      filter: brightness(1.06);
+    }
+
+    .btn-gold:active {
+      transform: translateY(0);
+    }
+
+    .btn-outline-gold {
+      border: 1.5px solid rgba(250, 204, 21, 0.5);
+      color: #facc15;
+      background: rgba(234, 179, 8, 0.08);
+      font-weight: 700;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-outline-gold:hover {
+      background: rgba(234, 179, 8, 0.2);
+      border-color: #facc15;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .text-gold-gradient {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Accordion Chevron Animation */
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details summary {
+      list-style: none;
+    }
+    details[open] .faq-icon {
+      transform: rotate(180deg);
+      color: #facc15;
+    }
+
+    /* Pulse Glow Animation */
+    @keyframes goldGlowPulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(250, 204, 21, 0.65); }
+    }
+    .gold-glow-pulse {
+      animation: goldGlowPulse 2.8s infinite;
+    }
+  </style>
+</head>
+<body class="bg-navy text-slate-100 antialiased selection:bg-gold selection:text-navy">
+
+  <!-- 1. TOP ANNOUNCEMENT TICKER -->
+  <aside aria-label="Thông báo ưu đãi" class="bg-gradient-to-r from-goldDark via-goldBright to-goldDark text-navy text-xs sm:text-sm font-extrabold text-center py-2 px-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+      <span class="inline-block animate-bounce">🎁</span>
+      <span>ƯU ĐÃI ĐỘC QUYỀN: Mua Tool tạo 50 video Google Flow — Tặng Chatbot MV &amp; Bộ 100+ Prompt điện ảnh!</span>
+    </div>
+  </aside>
+
+  <!-- 2. STICKY HEADER / NAVBAR -->
+  <header class="bg-navy/90 backdrop-blur-md border-b border-gold/15 sticky top-[33px] sm:top-[37px] z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo Brand -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-goldBright to-goldDark flex items-center justify-center font-black text-navy text-xl shadow-lg group-hover:scale-105 transition-transform">
+          TK
+        </div>
+        <div>
+          <span class="font-black text-lg sm:text-xl tracking-wider text-white">TIENKHANH<span class="text-goldBright">.ACADEMY</span></span>
+          <p class="text-[11px] text-silver font-medium tracking-wide">Video AI &amp; Vibe Coding</p>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-200">
+        <a href="#so-sanh" class="hover:text-goldBright transition">Lợi Ích Đột Phá</a>
+        <a href="#thu-vien-mau" class="hover:text-goldBright transition">Video Thực Tế</a>
+        <a href="#san-pham" class="hover:text-goldBright transition">Gói Công Cụ</a>
+        <a href="#quy-trinh" class="hover:text-goldBright transition">Quy Trình 3 Bước</a>
+        <a href="#bang-gia" class="hover:text-goldBright transition">Bảng Giá</a>
+        <a href="#faq" class="hover:text-goldBright transition">Hỏi Đáp</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://zalo.me/0918257209" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold/40 text-xs font-bold text-goldBright bg-gold/10 hover:bg-gold/20 transition">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Zalo: 0918 257 209 (Thanh Hà)
+        </a>
+        <a href="#dat-hang" class="btn-gold px-5 py-2.5 rounded-full text-xs sm:text-sm">
+          <span>Nhận Tool Ngay</span>
+          <span>➔</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 3. HERO SECTION -->
+    <section class="relative pt-12 pb-20 sm:pt-16 sm:pb-28 overflow-hidden bg-dot-grid">
+      <!-- Ambient Backlight -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <!-- Pill Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/40 text-goldBright text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-6">
+          <span class="w-2 h-2 rounded-full bg-goldBright animate-ping"></span>
+          🔥 TỰ ĐỘNG HÓA TẠO MV CA NHẠC AI HÀNG ĐẦU 2026
+        </div>
+
+        <!-- Main H1 Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight uppercase max-w-5xl mx-auto">
+          Tạo <span class="text-gold-gradient">50 Video MV Ca Nhạc Hàng Loạt</span> Trong Google Flow
+        </h1>
+
+        <!-- Subheadline / Pain Point Resolution -->
+        <p class="mt-6 text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
+          Không còn ngồi gõ từng ô prompt trống hay canh chừng Flow cả ngày! <br class="hidden sm:inline">
+          Chỉ cần dán lời bài hát hoặc file MP3 ➔ <strong class="text-goldBright font-bold">Chatbot tự lên 30-50 prompt điện ảnh</strong> ➔ <strong class="text-white font-bold">Tool tự động sinh 50 clip 8s song song</strong> chỉ với 1 click chuột.
+        </p>
+
+        <!-- CTA Buttons Group -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#dat-hang" class="btn-gold px-8 py-4 rounded-full text-base sm:text-lg w-full sm:w-auto gold-glow-pulse">
+            <span>Nhận Combo Tool + Chatbot (369.000đ)</span>
+            <span class="text-xl">➔</span>
+          </a>
+          <button onclick="openVideoModal('assets/demo-mv-preview.mp4', 'Xem Video Thành Phẩm MV Ca Nhạc AI')" class="btn-outline-gold px-7 py-4 rounded-full text-base sm:text-lg w-full sm:w-auto">
+            <span>▶ Xem Video MV Thành Phẩm</span>
+          </button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-400">
+          <span class="flex items-center gap-1.5"><span class="text-goldBright font-bold">✓</span> Đã kiểm chứng trên 1.000+ clip MV</span>
+          <span class="flex items-center gap-1.5"><span class="text-goldBright font-bold">✓</span> Cài đặt tiện ích 1 click (không cần biết code)</span>
+          <span class="flex items-center gap-1.5"><span class="text-goldBright font-bold">✓</span> Hỗ trợ Ultraview 1-1 &amp; Update trọn đời</span>
+        </div>
+
+        <!-- Hero Visual Showcase: Real Video Player Card -->
+        <div class="mt-12 max-w-4xl mx-auto">
+          <div class="glass-card-highlight rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 relative group">
+            <div class="relative rounded-xl sm:rounded-2xl overflow-hidden aspect-video bg-navy/80 border border-gold/30">
+              <video id="hero-preview-video" class="w-full h-full object-cover" poster="assets/thumbnail-video-mv-ai.png" playsinline muted loop autoplay>
+                <source src="assets/demo-mv-preview.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+              </video>
+
+              <!-- Video Overlay Controls & Badge -->
+              <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-navy/30 pointer-events-none"></div>
+
+              <div class="absolute top-4 left-4 flex items-center gap-2">
+                <span class="bg-navy/80 backdrop-blur-md border border-gold/50 text-goldBright text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                  Clip Mẫu 100% Tạo Bằng Google Flow + Tool
+                </span>
+              </div>
+
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div class="text-left">
+                  <p class="text-xs sm:text-sm font-bold text-white">MV Ca Nhạc Thôn Quê Hữu Tình (Phong Cách AI Điện Ảnh)</p>
+                  <p class="text-[11px] text-slate-400">Sinh đồng loạt 50 cảnh 8s chỉ trong 10 phút</p>
+                </div>
+                <button onclick="toggleHeroAudio()" id="btn-hero-sound" class="pointer-events-auto bg-gold/90 hover:bg-gold text-navy font-bold text-xs px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition">
+                  <span id="sound-icon">🔇 Bật tiếng</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Author Trust Pill -->
+        <div class="mt-10 inline-flex items-center gap-4 px-5 py-3 rounded-full glass-card border border-gold/30">
+          <img src="assets/tien-khanh-tac-gia.png" alt="Tiến Khanh - Video AI & Vibe Coding" class="w-12 h-12 rounded-full object-cover border-2 border-goldBright">
+          <div class="text-left">
+            <p class="text-xs text-silver font-semibold uppercase tracking-wider">Được phát triển &amp; bảo chứng bởi</p>
+            <p class="text-sm font-bold text-white">Tiến Khanh <span class="text-goldBright">• TIENKHANH.ACADEMY</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. COMPARISON SECTION (BEFORE / AFTER - CŨ VS TIẾN KHANH AI) -->
+    <section id="so-sanh" class="py-20 bg-navy/60 border-t border-gold/15 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-goldBright text-xs sm:text-sm font-black uppercase tracking-widest">SO SÁNH HIỆU QUẢ THỰC TẾ</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2">
+            Tại Sao Bạn Nên Dừng Làm MV Theo Cách Thủ Công?
+          </h2>
+          <p class="mt-4 text-slate-400 text-sm sm:text-base">
+            Sự khác biệt giữa việc mất hàng chục giờ đồng hồ ngồi mò mẫm và việc tự động hóa bằng quy trình chuẩn của Tiến Khanh AI.
+          </p>
+        </div>
+
+        <!-- 2 Column Comparison Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <!-- Col 1: Cách Cũ / Đau Đầu -->
+          <div class="rounded-3xl p-6 sm:p-8 border border-red-500/25 bg-red-950/10 backdrop-blur-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6 pb-4 border-b border-red-500/20">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center font-black text-lg">✕</div>
+                  <h3 class="text-xl font-bold text-red-300">Cách Làm Thủ Công Cũ</h3>
+                </div>
+                <span class="text-xs bg-red-500/20 text-red-300 px-3 py-1 rounded-full font-bold">Mất thời gian</span>
+              </div>
+
+              <ul class="space-y-4 text-sm text-slate-300">
+                <li class="flex items-start gap-3">
+                  <span class="text-red-400 font-bold text-base mt-0.5">✕</span>
+                  <span><strong>Mất 4-8 tiếng/ngày:</strong> Ngồi nghĩ từng câu prompt, bí ý tưởng bối cảnh, gõ từng ô lệnh đơn lẻ trong Google Flow.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-red-400 font-bold text-base mt-0.5">✕</span>
+                  <span><strong>Canh máy liên tục:</strong> Ngồi chực từng clip 8 giây hoàn thành mới bấm tiếp clip sau, không thể làm việc khác.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-red-400 font-bold text-base mt-0.5">✕</span>
+                  <span><strong>Hình ảnh không đồng nhất:</strong> Nhân vật lúc trẻ lúc già, phong cách chắp vá, không ăn khớp với nhịp điệu bài hát.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-red-400 font-bold text-base mt-0.5">✕</span>
+                  <span><strong>Dính Watermark Flow:</strong> Không biết cách che/xóa watermark khiến clip trông thiếu chuyên nghiệp.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-red-400 font-bold text-base mt-0.5">✕</span>
+                  <span><strong>Dễ nản lòng bỏ cuộc:</strong> Đầu tư nhiều công sức nhưng mỗi tuần chỉ ra được 1 video, kênh khó tăng trưởng.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8 pt-4 border-t border-red-500/20 text-xs text-red-400/80 font-medium text-center">
+              Tốn nhiều công sức nhưng hiệu quả mang lại rất thấp
+            </div>
+          </div>
+
+          <!-- Col 2: Giải Pháp Tiến Khanh AI / Tự Động Hóa -->
+          <div class="rounded-3xl p-6 sm:p-8 glass-card-highlight flex flex-col justify-between relative">
+            <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-goldBright to-goldDark text-navy font-black text-xs px-3.5 py-1 rounded-full uppercase tracking-wider shadow-lg">
+              GIẢI PHÁP TỐI ƯU 2026
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-6 pb-4 border-b border-gold/30">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-gold/20 text-goldBright flex items-center justify-center font-black text-lg">✓</div>
+                  <h3 class="text-xl font-bold text-white">Quy Trình Tiến Khanh AI</h3>
+                </div>
+                <span class="text-xs bg-gold/20 text-goldBright border border-gold/40 px-3 py-1 rounded-full font-bold">1 Click Chạy Ngay</span>
+              </div>
+
+              <ul class="space-y-4 text-sm text-slate-200">
+                <li class="flex items-start gap-3">
+                  <span class="text-goldBright font-bold text-base mt-0.5">✓</span>
+                  <span><strong class="text-goldBright">Chatbot MV lên prompt tự động:</strong> Dán lời bài hát hoặc file MP3, bot phân tích nhịp &amp; ca từ, xuất 30-50 prompt chuẩn điện ảnh chỉ trong 30 giây.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-goldBright font-bold text-base mt-0.5">✓</span>
+                  <span><strong class="text-goldBright">Tool chạy 50 video cùng lúc:</strong> Nạp danh sách prompt vào Flow, bấm 1 nút là Tool tự động tạo 50 clip 8s song song. Thảnh thơi đi uống cafe!</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-goldBright font-bold text-base mt-0.5">✓</span>
+                  <span><strong class="text-goldBright">Nhất quán nhân vật &amp; phong cách:</strong> Khớp từng phân đoạn Intro, Verse, Chorus, Outro theo đúng mạch cảm xúc ca khúc.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-goldBright font-bold text-base mt-0.5">✓</span>
+                  <span><strong class="text-goldBright">Tặng kèm bí kíp xử lý Watermark:</strong> Hướng dẫn xóa sạch watermark của Flow và ráp MV hoàn chỉnh trên CapCut cực nhanh.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-goldBright font-bold text-base mt-0.5">✓</span>
+                  <span><strong class="text-goldBright">Sản xuất đều đặn 1-2 MV/ngày:</strong> Nhân bản số lượng video, xây kênh âm nhạc AI triệu view bền vững.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-gold/20 flex items-center justify-between">
+              <span class="text-xs text-silver">Tiết kiệm 90% thời gian</span>
+              <a href="#dat-hang" class="text-goldBright text-xs font-bold hover:underline">Nhận combo ưu đãi ➔</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PORTFOLIO & REAL OUTPUT SHOWCASE -->
+    <section id="thu-vien-mau" class="py-20 relative bg-dot-grid">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-goldBright text-xs sm:text-sm font-black uppercase tracking-widest">KẾT QUẢ THỰC TẾ 100%</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2">
+            Thư Viện Sản Phẩm Được Tạo Từ Quy Trình Này
+          </h2>
+          <p class="mt-4 text-slate-400 text-sm sm:text-base">
+            Bấm vào từng mẫu bên dưới để xem chi tiết chất lượng video 8s và giao diện tool hoạt động thực tế trên máy.
+          </p>
+        </div>
+
+        <!-- 4 Grid Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="glass-card rounded-2xl overflow-hidden group hover:border-gold/60 transition-all duration-300 flex flex-col justify-between">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openVideoModal('assets/demo-mv-preview.mp4', 'MV Dân Gian - Cảnh 1 (Dòng Sông & Đò Ngang)')">
+              <img src="assets/04_demo_song_verse1_90s.jpg" alt="Phân cảnh MV Dân Gian" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                <span class="w-12 h-12 rounded-full bg-gold/90 text-navy flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition">▶</span>
+              </div>
+              <span class="absolute top-2.5 left-2.5 bg-navy/80 text-goldBright border border-gold/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full">MV Dân Gian</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-sm text-white line-clamp-1">Phân cảnh Verse 1: Thôn Quê</h3>
+              <p class="text-xs text-slate-400 mt-1">Prompt tự sinh theo lời nhạc: sông nước, đò chiều, ánh hoàng hôn.</p>
+              <button onclick="openVideoModal('assets/demo-mv-preview.mp4', 'MV Dân Gian - Cảnh 1')" class="mt-3 text-goldBright text-xs font-bold hover:underline flex items-center gap-1">
+                Xem clip 8s mẫu ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card rounded-2xl overflow-hidden group hover:border-gold/60 transition-all duration-300 flex flex-col justify-between">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openVideoModal('assets/demo-mv-preview.mp4', 'MV Tình Yêu Lãng Mạn - Cảnh Cặp Đôi')">
+              <img src="assets/05_demo_song_verse2_200s.jpg" alt="Phân cảnh MV Cặp Đôi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                <span class="w-12 h-12 rounded-full bg-gold/90 text-navy flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition">▶</span>
+              </div>
+              <span class="absolute top-2.5 left-2.5 bg-navy/80 text-goldBright border border-gold/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full">MV Ballad</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-sm text-white line-clamp-1">Phân cảnh Chorus: Tình Yêu Lãng Mạn</h3>
+              <p class="text-xs text-slate-400 mt-1">Biểu cảm chân thực, chuyển động máy quay Slow-motion điện ảnh.</p>
+              <button onclick="openVideoModal('assets/demo-mv-preview.mp4', 'MV Tình Yêu Lãng Mạn')" class="mt-3 text-goldBright text-xs font-bold hover:underline flex items-center gap-1">
+                Xem clip 8s mẫu ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card rounded-2xl overflow-hidden group hover:border-gold/60 transition-all duration-300 flex flex-col justify-between">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openVideoModal('assets/demo-tool-flow.mp4', 'Giao Diện Tool Tự Động Tạo Hàng Loạt Trên Google Flow')">
+              <img src="assets/08_badge_google_flow_511s.jpg" alt="Tool chạy trong Flow" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                <span class="w-12 h-12 rounded-full bg-gold/90 text-navy flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition">▶</span>
+              </div>
+              <span class="absolute top-2.5 left-2.5 bg-navy/80 text-goldBright border border-gold/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Flow Automation</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-sm text-white line-clamp-1">Tool Chạy Thực Tế Trên Google Flow</h3>
+              <p class="text-xs text-slate-400 mt-1">Tự động nạp danh sách prompt, bấm 1 nút chạy đồng loạt 50 video.</p>
+              <button onclick="openVideoModal('assets/demo-tool-flow.mp4', 'Giao diện Tool chạy trong Google Flow')" class="mt-3 text-goldBright text-xs font-bold hover:underline flex items-center gap-1">
+                Xem quay màn hình Tool ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="glass-card rounded-2xl overflow-hidden group hover:border-gold/60 transition-all duration-300 flex flex-col justify-between">
+            <div class="relative aspect-video overflow-hidden bg-slate-900 cursor-pointer" onclick="openVideoModal('assets/demo-mv-preview.mp4', 'Quy Trình Tạo 34 Cảnh Khớp Nhịp Bài Hát')">
+              <img src="assets/07_badge_34scenes_351s.jpg" alt="Quy trình 34 cảnh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                <span class="w-12 h-12 rounded-full bg-gold/90 text-navy flex items-center justify-center font-bold text-lg shadow-lg group-hover:scale-110 transition">▶</span>
+              </div>
+              <span class="absolute top-2.5 left-2.5 bg-navy/80 text-goldBright border border-gold/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Prompt Pipeline</span>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-sm text-white line-clamp-1">Bản Phân Cảnh 34 Đoạn Theo Bài Hát</h3>
+              <p class="text-xs text-slate-400 mt-1">Đảm bảo đủ cảnh dựng trọn vẹn 1 bài hát 3-4 phút mà không bị trùng lặp.</p>
+              <button onclick="openVideoModal('assets/demo-mv-preview.mp4', 'Bản Phân Cảnh 34 Đoạn')" class="mt-3 text-goldBright text-xs font-bold hover:underline flex items-center gap-1">
+                Xem clip 8s mẫu ➔
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WHAT YOU GET / VALUE STACK (GÓI 5 TRONG 1) -->
+    <section id="san-pham" class="py-20 bg-navy/70 border-t border-gold/15 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-goldBright text-xs sm:text-sm font-black uppercase tracking-widest">ĐÓNG GÓI GIÁ TRỊ VƯỢT TRỘI</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2">
+            Trọn Bộ Công Cụ &amp; Quà Tặng Bạn Sở Hữu Hôm Nay
+          </h2>
+          <p class="mt-4 text-slate-400 text-sm sm:text-base">
+            Không chỉ là 1 công cụ, đây là hệ thống tự động hóa hoàn chỉnh đưa bạn từ ca từ bài hát đến sản phẩm MV xuất bản.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Item 1: Main Product (Tool) -->
+          <div class="glass-card-highlight rounded-3xl p-6 relative flex flex-col justify-between">
+            <span class="absolute -top-3 left-6 bg-gradient-to-r from-goldBright to-goldDark text-navy font-black text-[11px] px-3 py-0.5 rounded-full uppercase">
+              SẢN PHẨM CHÍNH
+            </span>
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-gold/20 text-goldBright flex items-center justify-center font-black text-2xl mb-4">
+                ⚡
+              </div>
+              <h3 class="text-xl font-bold text-white">Tool Tạo Video Hàng Loạt Trên Flow</h3>
+              <p class="text-xs text-goldBright font-semibold mt-1">Trị giá: 500.000đ</p>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                Tự động hóa 100% thao tác trong Google Flow. Nạp hàng chục prompt và nhấn chạy — Tool sẽ tự động bấm tạo tối đa <strong>50 video clip 8 giây</strong> trong 1 lượt. Không tốn công click chuột thủ công.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gold/20 text-xs text-slate-400 flex items-center gap-2">
+              <span class="text-goldBright font-bold">✓</span> Dùng vĩnh viễn trên Chrome / Edge / Cốc Cốc
+            </div>
+          </div>
+
+          <!-- Item 2: Chatbot MV -->
+          <div class="glass-card rounded-3xl p-6 relative flex flex-col justify-between">
+            <span class="absolute -top-3 left-6 bg-emerald-500 text-navy font-black text-[11px] px-3 py-0.5 rounded-full uppercase">
+              QUÀ TẶNG KÈM 1
+            </span>
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-2xl mb-4">
+                🤖
+              </div>
+              <h3 class="text-xl font-bold text-white">Chatbot MV Lên Prompt Từ Ca Từ</h3>
+              <p class="text-xs text-emerald-400 font-semibold mt-1">Trị giá: 350.000đ (Tặng 0đ)</p>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                Chỉ cần dán lời bài hát hoặc gửi file MP3, Chatbot AI sẽ bóc tách cảm xúc và tự động viết <strong>30 - 50 prompt chuẩn điện ảnh</strong> (góc máy, ánh sáng, chuyển động camera) khớp chuẩn cú pháp của Google Flow.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gold/20 text-xs text-slate-400 flex items-center gap-2">
+              <span class="text-goldBright font-bold">✓</span> Không cần suy nghĩ prompt từ đầu
+            </div>
+          </div>
+
+          <!-- Item 3: Kho 100+ Prompt Mẫu -->
+          <div class="glass-card rounded-3xl p-6 relative flex flex-col justify-between">
+            <span class="absolute -top-3 left-6 bg-sky-500 text-navy font-black text-[11px] px-3 py-0.5 rounded-full uppercase">
+              QUÀ TẶNG KÈM 2
+            </span>
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center font-black text-2xl mb-4">
+                📚
+              </div>
+              <h3 class="text-xl font-bold text-white">Kho 100+ Prompt MV Đỉnh Cao</h3>
+              <p class="text-xs text-sky-400 font-semibold mt-1">Trị giá: 250.000đ (Tặng 0đ)</p>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                Tuyển tập hơn 100 công thức prompt điện ảnh đã được kiểm chứng cho mọi dòng nhạc: Nhạc Trẻ, Ballad, Rap, Cyberpunk, Dân gian Việt Nam, Cổ trang, Anime 3D... Copy dán dùng ngay!
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gold/20 text-xs text-slate-400 flex items-center gap-2">
+              <span class="text-goldBright font-bold">✓</span> Cập nhật thêm phong cách mới định kỳ
+            </div>
+          </div>
+
+          <!-- Item 4: Masterclass Video Tutorial -->
+          <div class="glass-card rounded-3xl p-6 relative flex flex-col justify-between">
+            <span class="absolute -top-3 left-6 bg-purple-500 text-white font-black text-[11px] px-3 py-0.5 rounded-full uppercase">
+              QUÀ TẶNG KÈM 3
+            </span>
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-black text-2xl mb-4">
+                🎬
+              </div>
+              <h3 class="text-xl font-bold text-white">Video Hướng Dẫn Mở Quyền &amp; Xóa Watermark</h3>
+              <p class="text-xs text-purple-400 font-semibold mt-1">Trị giá: 300.000đ (Tặng 0đ)</p>
+              <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                Video thực chiến từng bước: Hướng dẫn mở quyền tài khoản Google Flow tại Việt Nam cực nhanh + Mẹo xử lý xóa sạch Watermark tự động bằng CapCut trong 1 cú click chuột.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gold/20 text-xs text-slate-400 flex items-center gap-2">
+              <span class="text-goldBright font-bold">✓</span> Giải quyết triệt để rào cản kỹ thuật
+            </div>
+          </div>
+
+          <!-- Item 5: Ultraview Support & Lifetime Updates -->
+          <div class="glass-card rounded-3xl p-6 relative flex flex-col justify-between md:col-span-2 lg:col-span-2">
+            <span class="absolute -top-3 left-6 bg-goldBright text-navy font-black text-[11px] px-3 py-0.5 rounded-full uppercase">
+              ĐẶC QUYỀN ĐỒNG HÀNH
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-gold/20 text-goldBright flex items-center justify-center font-black text-2xl mb-4">
+                  🤝
+                </div>
+                <h3 class="text-xl font-bold text-white">Hỗ Trợ Kỹ Thuật 1-1 Qua Ultraview</h3>
+                <p class="text-xs text-goldBright font-semibold mt-1">Cam kết hỗ trợ từ Tiến Khanh AI</p>
+                <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                  Nếu bạn gặp khó khăn khi cài đặt, đội ngũ Tiến Khanh AI sẽ trực tiếp Ultraview/AnyDesk sang máy bạn để cài đặt và bấm chạy mượt mà ngay tại chỗ.
+                </p>
+              </div>
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-gold/20 text-goldBright flex items-center justify-center font-black text-2xl mb-4">
+                  🔄
+                </div>
+                <h3 class="text-xl font-bold text-white">Cập Nhật Tool Miễn Phí Trọn Đời</h3>
+                <p class="text-xs text-goldBright font-semibold mt-1">Bảo đảm hoạt động liên tục</p>
+                <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+                  Khi Google Flow cập nhật giao diện mới, tool sẽ được cập nhật phiên bản vá lỗi ngay lập tức trong nhóm Zalo VIP dành riêng cho khách hàng mà không phát sinh thêm bất kỳ chi phí nào.
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gold/20 text-xs text-slate-400 flex items-center justify-between">
+              <span class="flex items-center gap-2"><span class="text-goldBright font-bold">✓</span> Nhóm Zalo hỗ trợ giải đáp 24/7</span>
+              <a href="#dat-hang" class="text-goldBright font-bold hover:underline">Đặt combo ngay ➔</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. HOW IT WORKS (QUY TRÌNH 3 BƯỚC) -->
+    <section id="quy-trinh" class="py-20 bg-dot-grid relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-goldBright text-xs sm:text-sm font-black uppercase tracking-widest">ĐƠN GIẢN &amp; TINH GỌN</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2">
+            3 Bước Đi Từ Bài Nhạc Đến 50 Clip Video
+          </h2>
+          <p class="mt-4 text-slate-400 text-sm sm:text-base">
+            Quy trình được tối ưu hóa cho người mới, không đòi hỏi kiến thức lập trình hay kỹ năng prompt phức tạp.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          <!-- Step 1 -->
+          <div class="glass-card rounded-3xl p-6 sm:p-8 text-center relative group hover:border-gold/60 transition">
+            <div class="w-16 h-16 rounded-2xl bg-gold/20 border border-gold/40 text-goldBright flex items-center justify-center font-black text-2xl mx-auto mb-6 group-hover:scale-110 transition">
+              01
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Đưa Bài Hát Vào Chatbot</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Gửi lời bài hát (lyrics) hoặc tải file MP3 có lời vào Chatbot MV. Cho chatbot biết phong cách âm nhạc bạn mong muốn (cổ trang, hiện đại, lãng mạn hay anime...).
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-card rounded-3xl p-6 sm:p-8 text-center relative group hover:border-gold/60 transition">
+            <div class="w-16 h-16 rounded-2xl bg-gold/20 border border-gold/40 text-goldBright flex items-center justify-center font-black text-2xl mx-auto mb-6 group-hover:scale-110 transition">
+              02
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Nhận Dàn Prompt Chuẩn Flow</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Chatbot tự động chia bài hát thành các phân đoạn (Intro, Verse, Chorus) và soạn sẵn <strong>30 đến 50 prompt chi tiết</strong> có góc quay, camera movement, ánh sáng cinematic.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-card-highlight rounded-3xl p-6 sm:p-8 text-center relative group hover:scale-[1.02] transition">
+            <div class="w-16 h-16 rounded-2xl bg-goldBright text-navy flex items-center justify-center font-black text-2xl mx-auto mb-6 shadow-lg">
+              03
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Bật Tool Tạo 50 Video</h3>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              Mở Google Flow, dán danh sách prompt và bấm <strong>"Bắt đầu chạy hàng loạt"</strong>. Tool sẽ tự động xử lý và xuất 50 video 8s sắc nét để bạn ghép vào CapCut hoàn thiện MV!
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a href="#dat-hang" class="btn-gold px-8 py-3.5 rounded-full text-base">
+            <span>Bắt Đầu Tạo MV Của Bạn Ngay</span>
+            <span>➔</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. PRICING & OFFER BOX (BẢNG GIÁ & FLASH SALE) -->
+    <section id="bang-gia" class="py-20 bg-navy/80 border-t border-gold/15 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Pricing Card Container -->
+        <div class="glass-card-highlight rounded-3xl p-6 sm:p-10 relative overflow-hidden text-center">
+          <!-- Ambient Glow -->
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Pill Tag -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-goldBright/20 border border-goldBright/40 text-goldBright text-xs font-black uppercase tracking-wider mb-4">
+            🔥 FLASH SALE ƯU ĐÃI ĐẶC BIỆT THÁNG 11/2026
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl font-black uppercase text-white">
+            Trọn Bộ Tool Flow + Chatbot MV + Quà Tặng
+          </h2>
+          <p class="text-sm sm:text-base text-slate-300 mt-2">
+            Đầu tư một lần duy nhất — Tiết kiệm hàng trăm giờ làm video mỗi tháng.
+          </p>
+
+          <!-- Price Display -->
+          <div class="my-8 flex items-baseline justify-center gap-4">
+            <span class="text-slate-500 line-through text-xl sm:text-2xl font-bold">1.200.000đ</span>
+            <span class="text-4xl sm:text-6xl font-black text-gold-gradient tracking-tight">369.000đ</span>
+            <span class="text-xs sm:text-sm bg-red-500/20 text-red-300 border border-red-500/40 px-2.5 py-1 rounded-full font-bold">
+              Tiết kiệm 69%
+            </span>
+          </div>
+
+          <!-- Countdown Timer -->
+          <div class="inline-flex items-center gap-2 sm:gap-4 bg-navy/80 border border-gold/30 rounded-2xl px-4 py-2 text-xs sm:text-sm font-bold text-silverLight mb-8">
+            <span>Ưu đãi kết thúc sau:</span>
+            <div class="flex items-center gap-1 text-goldBright font-mono text-base sm:text-lg" id="countdown-timer">
+              <span id="hours">07</span>h : <span id="minutes">15</span>m : <span id="seconds">42</span>s
+            </div>
+          </div>
+
+          <!-- Value Stack Recap -->
+          <div class="max-w-xl mx-auto text-left bg-navy/60 rounded-2xl p-5 border border-gold/20 space-y-2.5 text-xs sm:text-sm text-slate-200 mb-8">
+            <div class="flex items-center justify-between">
+              <span>✓ Tool tạo 50 video Google Flow hàng loạt</span>
+              <span class="text-goldBright font-semibold">500.000đ</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>✓ Chatbot MV phân tích ca từ &amp; viết prompt</span>
+              <span class="text-emerald-400 font-semibold">Tặng kèm (0đ)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>✓ Kho 100+ prompt bối cảnh MV điện ảnh</span>
+              <span class="text-emerald-400 font-semibold">Tặng kèm (0đ)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>✓ Video hướng dẫn mở Flow &amp; mẹo xóa Watermark</span>
+              <span class="text-emerald-400 font-semibold">Tặng kèm (0đ)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>✓ Hỗ trợ Ultraview 1-1 &amp; Update trọn đời</span>
+              <span class="text-emerald-400 font-semibold">Miễn phí (0đ)</span>
+            </div>
+            <div class="pt-3 border-t border-gold/20 flex items-center justify-between font-bold text-white">
+              <span>Tổng giá trị thực tế:</span>
+              <span class="text-goldBright text-base">1.400.000đ</span>
+            </div>
+          </div>
+
+          <a href="#dat-hang" class="btn-gold px-10 py-4 rounded-full text-base sm:text-lg w-full sm:w-auto gold-glow-pulse">
+            <span>Điền Thông Tin Nhận Tool Ngay (369K)</span>
+            <span class="text-xl">➔</span>
+          </a>
+          <p class="text-xs text-silver mt-3">Thanh toán 1 lần • Sở hữu vĩnh viễn • Nhận mã kích hoạt ngay sau khi chuyển khoản</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. DIRECT ORDER FORM + AUTOMATIC VIETQR GENERATOR -->
+    <section id="dat-hang" class="py-20 bg-dot-grid relative">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card-highlight rounded-3xl p-6 sm:p-10 relative">
+          <div class="text-center mb-8">
+            <span class="text-goldBright text-xs font-black uppercase tracking-widest">ĐẶT HÀNG NHANH CHÓNG</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 uppercase">
+              Thông Tin Nhận Tool &amp; Chatbot MV
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2">
+              Vui lòng điền thông tin chính xác để hệ thống gửi liên kết cài đặt Tool và hướng dẫn sử dụng cho bạn.
+            </p>
+          </div>
+
+          <!-- Order Form -->
+          <form id="order-form" onsubmit="handleOrderSubmit(event)" class="space-y-5">
+            <div>
+              <label for="fullname" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+                Họ và Tên của bạn <span class="text-red-400">*</span>
+              </label>
+              <input type="text" id="fullname" name="fullname" required placeholder="Ví dụ: Nguyễn Văn An"
+                class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="phone" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+                  Số điện thoại / Zalo <span class="text-red-400">*</span>
+                </label>
+                <input type="tel" id="phone" name="phone" required placeholder="Ví dụ: 0912345678"
+                  class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+                  Email nhận tài liệu &amp; Tool <span class="text-red-400">*</span>
+                </label>
+                <input type="email" id="email" name="email" required placeholder="email@gmail.com"
+                  class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+              </div>
+            </div>
+
+            <div>
+              <label for="note" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
+                Ghi chú thêm (không bắt buộc)
+              </label>
+              <input type="text" id="note" name="note" placeholder="Ví dụ: Tôi muốn hỏi thêm về cách làm nhạc AI..."
+                class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+            </div>
+
+            <!-- Total Price Summary in Form -->
+            <div class="p-4 rounded-xl bg-navy/70 border border-gold/20 flex items-center justify-between text-sm">
+              <div>
+                <span class="text-silver text-xs block">Gói đăng ký:</span>
+                <span class="font-bold text-white">Combo Tool Google Flow + Chatbot MV</span>
+              </div>
+              <div class="text-right">
+                <span class="text-silver line-through text-xs block">1.200.000đ</span>
+                <span class="font-extrabold text-goldBright text-lg">369.000đ</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-gold w-full py-4 rounded-xl text-base sm:text-lg font-black tracking-wide gold-glow-pulse">
+              <span>Xác Nhận &amp; Tạo Mã VietQR Thanh Toán</span>
+              <span>➔</span>
+            </button>
+          </form>
+
+          <div class="mt-4 text-center">
+            <p class="text-[11px] text-slate-400">
+              🔒 Thông tin của bạn được bảo mật tuyệt đối theo chính sách của Tiến Khanh AI.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. FAQ SECTION (CÂU HỎI THƯỜNG GẶP - ĐÃ SỬA CÚ PHÁP & TRẢ LỜI ĐẦY ĐỦ) -->
+    <section id="faq" class="py-20 bg-navy/70 border-t border-gold/15 relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-goldBright text-xs sm:text-sm font-black uppercase tracking-widest">GIẢI ĐÁP THẮC MẮC</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold uppercase mt-2">
+            Câu Hỏi Thường Gặp Trước Khi Mua
+          </h2>
+          <p class="mt-4 text-slate-400 text-sm sm:text-base">
+            Tất cả những điều bạn cần biết về điều kiện sử dụng, kích hoạt và chính sách hỗ trợ.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <details class="glass-card rounded-2xl p-5 group transition">
+            <summary class="flex items-center justify-between font-bold text-base sm:text-lg text-white cursor-pointer select-none">
+              <span>1. Với 369.000đ, tôi nhận được chính xác những gì?</span>
+              <span class="faq-icon text-goldBright transition-transform duration-200">▼</span>
+            </summary>
+            <div class="mt-4 pt-3 border-t border-gold/15 text-sm text-slate-300 leading-relaxed space-y-2">
+              <p>Bạn nhận được trọn gói bộ giải pháp làm MV ca nhạc AI bao gồm:</p>
+              <ul class="list-disc list-inside space-y-1 text-slate-200 pl-2">
+                <li><strong>Tool tạo video hàng loạt:</strong> Chạy ngầm trong Google Flow, tạo tối đa 50 video clip 8s cùng một lượt.</li>
+                <li><strong>Chatbot MV chuyên sâu:</strong> Nhận ca từ bài hát hoặc file MP3 để lên prompt tự động cho từng cảnh.</li>
+                <li><strong>Bộ 100+ prompt mẫu:</strong> Tuyển tập bối cảnh MV điện ảnh cho mọi thể loại nhạc.</li>
+                <li><strong>Video Masterclass:</strong> Hướng dẫn mở quyền tài khoản Google Flow và mẹo xóa sạch watermark.</li>
+                <li><strong>Quyền hỗ trợ Ultraview 1-1</strong> và nhận cập nhật phần mềm trọn đời.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details class="glass-card rounded-2xl p-5 group transition">
+            <summary class="flex items-center justify-between font-bold text-base sm:text-lg text-white cursor-pointer select-none">
+              <span>2. Nếu tài khoản Google của tôi chưa vào được Google Flow thì sao?</span>
+              <span class="faq-icon text-goldBright transition-transform duration-200">▼</span>
+            </summary>
+            <div class="mt-4 pt-3 border-t border-gold/15 text-sm text-slate-300 leading-relaxed">
+              <p>Google Flow hiện đang mở quyền theo danh sách chờ hoặc khu vực. Trong gói quà tặng kèm, Tiến Khanh AI có sẵn <strong>video hướng dẫn mở quyền truy cập Google Flow chỉ trong 2 phút</strong> bằng cách chuyển vùng hợp lệ. Trường hợp bạn vẫn không thao tác được, đội ngũ hỗ trợ sẽ kết nối Ultraview trực tiếp để kích hoạt tài khoản giúp bạn.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details class="glass-card rounded-2xl p-5 group transition">
+            <summary class="flex items-center justify-between font-bold text-base sm:text-lg text-white cursor-pointer select-none">
+              <span>3. Video tạo tại Việt Nam có bị Watermark không? Xử lý thế nào?</span>
+              <span class="faq-icon text-goldBright transition-transform duration-200">▼</span>
+            </summary>
+            <div class="mt-4 pt-3 border-t border-gold/15 text-sm text-slate-300 leading-relaxed">
+              <p>Google Flow mặc định chèn logo mờ ở góc video. Tuy nhiên, bạn hoàn toàn yên tâm vì trong bộ quà tặng kèm, Tiến Khanh AI đã đính kèm <strong>hướng dẫn chi tiết cách che hoặc xóa watermark tự động bằng CapCut / Premiere</strong> cực kỳ sạch đẹp, giữ trọn độ nét của MV mà không bị phát hiện logo.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details class="glass-card rounded-2xl p-5 group transition">
+            <summary class="flex items-center justify-between font-bold text-base sm:text-lg text-white cursor-pointer select-none">
+              <span>4. Tôi không biết lập trình/không rành máy tính có dùng được không?</span>
+              <span class="faq-icon text-goldBright transition-transform duration-200">▼</span>
+            </summary>
+            <div class="mt-4 pt-3 border-t border-gold/15 text-sm text-slate-300 leading-relaxed">
+              <p>Hoàn toàn dùng được! Tool được đóng gói dưới dạng tiện ích mở rộng (Extension / Script) cực kỳ thân thiện. Bạn chỉ cần cài vào trình duyệt Chrome/Edge một lần duy nhất. Có video hướng dẫn từng thao tác click chuột. Nếu không tự làm được, bạn chỉ cần nhắn Zalo, Tiến Khanh sẽ Ultraview cài sẵn cho bạn từ A-Z.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details class="glass-card rounded-2xl p-5 group transition">
+            <summary class="flex items-center justify-between font-bold text-base sm:text-lg text-white cursor-pointer select-none">
+              <span>5. Sau khi thanh toán, tôi nhận Tool và hướng dẫn như thế nào?</span>
+              <span class="faq-icon text-goldBright transition-transform duration-200">▼</span>
+            </summary>
+            <div class="mt-4 pt-3 border-t border-gold/15 text-sm text-slate-300 leading-relaxed">
+              <p>Ngay sau khi bạn chuyển khoản quét mã VietQR và gửi hóa đơn qua Zalo, hệ thống sẽ kích hoạt và gửi ngay link tải Tool, link truy cập Chatbot MV cùng toàn bộ kho tài liệu qua Zalo/Email của bạn trong vòng <strong>5 - 15 phút</strong>.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details class="glass-card rounded-2xl p-5 group transition">
+            <summary class="flex items-center justify-between font-bold text-base sm:text-lg text-white cursor-pointer select-none">
+              <span>6. Sau này Google Flow đổi giao diện thì Tool có bị lỗi không?</span>
+              <span class="faq-icon text-goldBright transition-transform duration-200">▼</span>
+            </summary>
+            <div class="mt-4 pt-3 border-t border-gold/15 text-sm text-slate-300 leading-relaxed">
+              <p>Mỗi khi Google Flow cập nhật thuật toán hoặc giao diện, Tiến Khanh AI sẽ lập tức cập nhật phiên bản tương thích và gửi miễn phí cho bạn qua nhóm Zalo VIP của khách hàng. Bạn chỉ mua một lần và được dùng bản cập nhật mãi mãi.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. EXPERT / MENTOR PROFILE SECTION -->
+    <section class="py-20 bg-dot-grid relative">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-gold/30 flex flex-col sm:flex-row items-center gap-8">
+          <img src="assets/tien-khanh-tac-gia.png" alt="Tiến Khanh - Video AI & Vibe Coding" class="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover border-2 border-goldBright shadow-xl flex-shrink-0">
+          <div class="text-center sm:text-left">
+            <span class="text-goldBright text-xs font-black uppercase tracking-wider">NGƯỜI ĐỒNG HÀNH CÙNG BẠN</span>
+            <h3 class="text-2xl font-black text-white mt-1">Tiến Khanh <span class="text-slate-400 text-lg font-medium">(Tien Khanh AI)</span></h3>
+            <p class="text-xs text-silver font-semibold mt-1">Video AI &amp; Vibe Coding • Sáng lập TIENKHANH.ACADEMY</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+              "Tôi tạo ra công cụ này từ chính trải nghiệm thức đêm làm hàng trăm video ca nhạc AI cho kênh của mình. Mục tiêu của tôi là giúp bạn gỡ bỏ mọi rào cản kỹ thuật phức tạp, biến công nghệ AI thành đòn bẩy sáng tạo âm nhạc nhàn nhã và hiệu quả nhất."
+            </p>
+            <div class="mt-5 flex flex-wrap items-center justify-center sm:justify-start gap-4">
+              <a href="https://zalo.me/0938519369" target="_blank" rel="noopener" class="text-xs font-bold text-goldBright hover:underline flex items-center gap-1.5">
+                <span>💬 Zalo Tiến Khanh: 0938 519 369</span>
+              </a>
+              <a href="https://zalo.me/0918257209" target="_blank" rel="noopener" class="text-xs font-bold text-emerald-400 hover:underline flex items-center gap-1.5">
+                <span>📞 Hotline Hỗ Trợ: 0918 257 209 (Thanh Hà)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. FINAL CTA SECTION -->
+    <section class="py-20 bg-gradient-to-b from-navy via-navyCard to-navy border-t border-gold/20 text-center relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <span class="text-goldBright text-xs sm:text-sm font-black uppercase tracking-widest">BẮT ĐẦU NGAY HÔM NAY</span>
+        <h2 class="text-3xl sm:text-5xl font-black uppercase text-white mt-2 leading-tight">
+          Bài Hát Đã Có. <br class="hidden sm:inline">Giờ Thêm Những Thước Phim Xứng Tầm.
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+          Đừng để ý tưởng âm nhạc của bạn nằm im trên trang giấy. Hãy để Tool tạo hàng loạt và Chatbot MV đưa ca khúc của bạn lên triệu view.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#dat-hang" class="btn-gold px-10 py-4 rounded-full text-base sm:text-lg gold-glow-pulse">
+            <span>Nhận Combo Tool &amp; Chatbot (369K)</span>
+            <span>➔</span>
+          </a>
+        </div>
+        <p class="text-xs text-silver mt-4">Hỗ trợ cài đặt Ultraview 1-1 • Cam kết cập nhật trọn đời</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 13. FOOTER BRAND STANDARDS -->
+  <footer class="bg-navy border-t border-gold/15 py-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-gold/10">
+        <!-- Brand Info -->
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-goldBright to-goldDark flex items-center justify-center font-black text-navy text-lg shadow-md">
+              TK
+            </div>
+            <span class="font-black text-base tracking-wider text-white">TIENKHANH<span class="text-goldBright">.ACADEMY</span></span>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-xs">
+            Học viện đào tạo &amp; cung cấp giải pháp Video AI, Tự động hóa sáng tạo nội dung và Vibe Coding hàng đầu.
+          </p>
+          <p class="text-slate-500 text-[11px] mt-2">Hộ Kinh Doanh Tiến Khanh Academy • GPKD số: 100888653388</p>
+        </div>
+
+        <!-- Contact Channels -->
+        <div>
+          <h4 class="font-bold text-sm text-white mb-3 uppercase tracking-wider">Kênh Liên Hệ &amp; Hỗ Trợ</h4>
+          <ul class="space-y-2">
+            <li>Hotline / Zalo Tiến Khanh: <a href="https://zalo.me/0938519369" target="_blank" rel="noopener" class="text-goldBright hover:underline font-bold">0938 519 369</a></li>
+            <li>Zalo Tư Vấn Viên: <a href="https://zalo.me/0918257209" target="_blank" rel="noopener" class="text-goldBright hover:underline font-bold">0918 257 209 (Thanh Hà)</a></li>
+            <li>Email chính thức: <a href="mailto:tienkhanh2838@gmail.com" class="text-slate-300 hover:underline">tienkhanh2838@gmail.com</a></li>
+            <li>Website chính: <a href="https://tienkhanh-academy.songnguyen2838.workers.dev/" target="_blank" rel="noopener" class="text-slate-300 hover:underline">tienkhanh-academy.songnguyen2838.workers.dev</a></li>
+          </ul>
+        </div>
+
+        <!-- Guarantees & Terms -->
+        <div>
+          <h4 class="font-bold text-sm text-white mb-3 uppercase tracking-wider">Chính Sách &amp; Cam Kết</h4>
+          <ul class="space-y-2">
+            <li>✓ Hỗ trợ cài đặt từ xa qua Ultraview 1-1</li>
+            <li>✓ Cam kết cập nhật bản vá khi Google Flow đổi giao diện</li>
+            <li>✓ Bảo mật 100% dữ liệu ca từ và thông tin khách hàng</li>
+            <li>✓ Hướng dẫn sử dụng chi tiết bằng video tiếng Việt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px] gap-2">
+        <p>© 2026 TIENKHANH.ACADEMY · Video AI &amp; Vibe Coding · Toàn quyền bảo lưu.</p>
+        <p>Google Flow là nhãn hiệu của Google LLC. Tool là giải pháp tiện ích hỗ trợ người dùng tự động hóa thao tác.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 14. FLOATING ZALO CONTACT BUTTON (BOTTOM RIGHT) -->
+  <aside aria-label="Kênh hỗ trợ nổi" class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+    <a href="https://zalo.me/0918257209" target="_blank" rel="noopener" class="flex items-center gap-2 px-4 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-2xl transition-all transform hover:scale-105 border border-white/20">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+      <span>Tư Vấn Zalo: 0918 257 209 (Thanh Hà)</span>
+    </a>
+  </aside>
+
+  <!-- 15. MODAL 1: AUTOMATIC VIETQR PAYMENT DIALOG -->
+  <dialog id="vietqr-dialog" class="backdrop:bg-black/80 bg-transparent p-4 max-w-lg w-full outline-none">
+    <div class="glass-card-highlight rounded-3xl p-6 sm:p-8 text-center relative border border-gold/40 text-slate-100">
+      <!-- Close Button -->
+      <button onclick="closeVietQRDialog()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold w-8 h-8 rounded-full bg-navy/80 border border-gold/20 flex items-center justify-center">
+        ✕
+      </button>
+
+      <span class="bg-goldBright/20 text-goldBright border border-goldBright/40 text-[11px] font-bold px-3 py-1 rounded-full uppercase">
+        XÁC NHẬN THANH TOÁN VIETQR
+      </span>
+
+      <h3 class="text-xl sm:text-2xl font-black text-white mt-3">
+        Quét Mã QR Chuyển Khoản
+      </h3>
+      <p class="text-xs text-slate-300 mt-1">
+        Mã QR đã tích hợp sẵn số tiền <strong>369.000đ</strong> và nội dung đơn hàng.
+      </p>
+
+      <!-- Dynamic QR Code Image -->
+      <div class="mt-4 p-3 bg-white rounded-2xl inline-block shadow-2xl border-2 border-goldBright">
+        <img id="qr-image" src="assets/qr-thanh-toan-vietinbank.png" alt="Mã VietQR VietinBank 369.000đ" class="w-56 h-56 object-contain">
+      </div>
+
+      <!-- Bank Transfer Details Info -->
+      <div class="mt-4 bg-navy/80 rounded-2xl p-4 border border-gold/20 text-xs text-left space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Ngân hàng:</span>
+          <span class="font-bold text-white">VietinBank (Công Thương)</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Số tài khoản:</span>
+          <div class="flex items-center gap-1.5">
+            <span class="font-mono font-bold text-goldBright text-sm" id="stk-val">104870570776</span>
+            <button onclick="copyText('104870570776', 'Đã chép STK!')" class="text-[10px] bg-gold/20 hover:bg-gold/30 text-goldBright px-1.5 py-0.5 rounded font-bold">Chép</button>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Chủ tài khoản:</span>
+          <span class="font-bold text-white">NGUYEN TIEN KHANH</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Số tiền:</span>
+          <span class="font-bold text-emerald-400 text-sm">369.000đ</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Nội dung CK:</span>
+          <div class="flex items-center gap-1.5">
+            <span class="font-mono font-bold text-goldBright text-sm" id="content-val">MV_AI</span>
+            <button onclick="copyContent()" class="text-[10px] bg-gold/20 hover:bg-gold/30 text-goldBright px-1.5 py-0.5 rounded font-bold">Chép</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm Button to Zalo -->
+      <div class="mt-5 space-y-2">
+        <a id="btn-zalo-confirm" href="https://zalo.me/0918257209" target="_blank" rel="noopener" class="btn-gold w-full py-3.5 rounded-xl text-sm font-bold">
+          <span>Đã Chuyển Khoản Xong ➔ Gửi Biên Lai Zalo</span>
+        </a>
+        <p class="text-[11px] text-slate-400">
+          Zalo hỗ trợ nhận mã kích hoạt nhanh: <strong>0918 257 209 (Thanh Hà)</strong> hoặc <strong>0938 519 369</strong>
+        </p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 16. MODAL 2: VIDEO PREVIEW PLAYER (16:9 & 9:16) -->
+  <dialog id="video-dialog" class="backdrop:bg-black/85 bg-transparent p-2 sm:p-4 max-w-4xl w-full outline-none">
+    <div class="glass-card-highlight rounded-3xl p-4 sm:p-6 relative border border-gold/40 text-slate-100">
+      <div class="flex items-center justify-between mb-3 pb-2 border-b border-gold/20">
+        <h4 id="video-modal-title" class="font-bold text-sm sm:text-base text-white">Xem Video Mẫu Thực Tế</h4>
+        <button onclick="closeVideoModal()" class="text-slate-400 hover:text-white text-xl font-bold w-8 h-8 rounded-full bg-navy/80 border border-gold/20 flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <div class="relative rounded-2xl overflow-hidden aspect-video bg-black flex items-center justify-center">
+        <video id="modal-video-player" class="w-full h-full object-contain" controls autoplay playsinline>
+          <source id="modal-video-source" src="assets/demo-mv-preview.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-xs text-slate-400">Video 8 giây tạo trực tiếp từ Google Flow bằng Tool tự động của Tiến Khanh AI.</p>
+        <a href="#dat-hang" onclick="closeVideoModal()" class="btn-gold px-6 py-2.5 rounded-full text-xs font-bold w-full sm:w-auto">
+          Nhận Tool Để Tạo Video Này ➔
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 17. JAVASCRIPT CONTROLLERS -->
+  <script>
+    // Countdown Timer (7 hours flash sale)
+    (function initCountdown() {
+      let totalSeconds = 7 * 3600 + 15 * 60 + 42;
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          const h = Math.floor(totalSeconds / 3600);
+          const m = Math.floor((totalSeconds % 3600) / 60);
+          const s = totalSeconds % 60;
+          if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
+          if (minutesEl) minutesEl.textContent = String(m).padStart(2, '0');
+          if (secondsEl) secondsEl.textContent = String(s).padStart(2, '0');
+        }
+      }, 1000);
+    })();
+
+    // Hero Video Sound Toggle
+    function toggleHeroAudio() {
+      const video = document.getElementById('hero-preview-video');
+      const soundIcon = document.getElementById('sound-icon');
+      if (!video) return;
+      if (video.muted) {
+        video.muted = false;
+        soundIcon.textContent = '🔊 Tắt tiếng';
+      } else {
+        video.muted = true;
+        soundIcon.textContent = '🔇 Bật tiếng';
+      }
+    }
+
+    // Modal Video Player Controller
+    const videoDialog = document.getElementById('video-dialog');
+    const modalVideo = document.getElementById('modal-video-player');
+    const modalSource = document.getElementById('modal-video-source');
+    const modalTitle = document.getElementById('video-modal-title');
+
+    function openVideoModal(videoSrc, title) {
+      if (modalSource && modalVideo) {
+        modalSource.src = videoSrc;
+        modalVideo.load();
+        modalVideo.play().catch(e => console.log('Autoplay handled', e));
+      }
+      if (modalTitle && title) {
+        modalTitle.textContent = title;
+      }
+      if (videoDialog) {
+        videoDialog.showModal();
+      }
+    }
+
+    function closeVideoModal() {
+      if (modalVideo) {
+        modalVideo.pause();
+      }
+      if (videoDialog) {
+        videoDialog.close();
+      }
+    }
+
+    // Modal VietQR Controller & Order Submit
+    const vietqrDialog = document.getElementById('vietqr-dialog');
+
+    function handleOrderSubmit(event) {
+      event.preventDefault();
+      const fullname = document.getElementById('fullname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const note = document.getElementById('note').value.trim();
+
+      // Clean phone number for transfer syntax
+      const cleanPhone = phone.replace(/[^0-9]/g, '');
+      const transferContent = 'MV_' + (cleanPhone ? cleanPhone : 'CANHAC');
+
+      // Update text in dialog
+      const contentValEl = document.getElementById('content-val');
+      if (contentValEl) {
+        contentValEl.textContent = transferContent;
+      }
+
+      // Generate VietQR API image URL dynamically
+      const qrImage = document.getElementById('qr-image');
+      const vietqrApi = `https://img.vietqr.io/image/vietinbank-104870570776-compact2.png?amount=369000&addInfo=${encodeURIComponent(transferContent)}&accountName=NGUYEN%20TIEN%20KHANH`;
+
+      if (qrImage) {
+        qrImage.src = vietqrApi;
+        // Fallback to local image if offline
+        qrImage.onerror = function() {
+          this.src = 'assets/qr-thanh-toan-vietinbank.png';
+        };
+      }
+
+      // Update Zalo confirmation link with pre-filled message
+      const zaloBtn = document.getElementById('btn-zalo-confirm');
+      if (zaloBtn) {
+        const zaloMsg = encodeURIComponent(`Chào bạn, tôi là ${fullname} (${phone}), tôi vừa chuyển khoản 369.000đ mua Combo Tool Flow + Chatbot MV với nội dung: ${transferContent}. Nhờ bạn kích hoạt Tool giúp tôi qua email: ${email}`);
+        zaloBtn.href = `https://zalo.me/0918257209?text=${zaloMsg}`;
+      }
+
+      // Save lead to localStorage
+      try {
+        const orderData = { fullname, phone, email, note, amount: 369000, content: transferContent, date: new Date().toISOString() };
+        localStorage.setItem('last_order_tienkhanh_ai', JSON.stringify(orderData));
+      } catch (e) {}
+
+      // Show Dialog
+      if (vietqrDialog) {
+        vietqrDialog.showModal();
+      }
+    }
+
+    function closeVietQRDialog() {
+      if (vietqrDialog) {
+        vietqrDialog.close();
+      }
+    }
+
+    function copyText(text, msg) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert(msg || 'Đã sao chép vào bộ nhớ tạm!');
+      }).catch(() => {
+        prompt('Vui lòng sao chép:', text);
+      });
+    }
+
+    function copyContent() {
+      const contentEl = document.getElementById('content-val');
+      const text = contentEl ? contentEl.textContent : 'MV_CANHAC';
+      copyText(text, 'Đã sao chép nội dung chuyển khoản!');
+    }
+
+    // Close modal when clicking outside
+    [videoDialog, vietqrDialog].forEach(dialog => {
+      if (!dialog) return;
+      dialog.addEventListener('click', (e) => {
+        const rect = dialog.getBoundingClientRect();
+        const isInDialog = (
+          rect.top <= e.clientY &&
+          e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX &&
+          e.clientX <= rect.left + rect.width
+        );
+        if (!isInDialog) {
+          dialog.close();
+          if (dialog === videoDialog && modalVideo) {
+            modalVideo.pause();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
