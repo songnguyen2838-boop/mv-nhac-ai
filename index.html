@@ -730,11 +730,12 @@
             </span>
           </div>
 
-          <!-- Countdown Timer -->
-          <div class="inline-flex items-center gap-2 sm:gap-4 bg-navy/80 border border-gold/30 rounded-2xl px-4 py-2 text-xs sm:text-sm font-bold text-silverLight mb-8">
+          <!-- Countdown Timer (Khớp ảnh tham chiếu của Tiến Khanh AI) -->
+          <div class="inline-flex items-center gap-2 sm:gap-4 bg-[#07131D]/95 border-2 border-goldBright rounded-full px-5 py-2.5 text-xs sm:text-sm font-bold text-white mb-8 shadow-xl gold-glow-pulse">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
             <span>Ưu đãi kết thúc sau:</span>
-            <div class="flex items-center gap-1 text-goldBright font-mono text-base sm:text-lg" id="countdown-timer">
-              <span id="hours">07</span>h : <span id="minutes">15</span>m : <span id="seconds">42</span>s
+            <div class="flex items-center gap-1.5 text-goldBright font-mono font-black text-sm sm:text-lg tracking-wider" id="countdown-timer">
+              <span class="countdown-hours" id="hours">07</span> h : <span class="countdown-minutes" id="minutes">04</span> m : <span class="countdown-seconds" id="seconds">24</span> s
             </div>
           </div>
 
@@ -1048,6 +1049,21 @@
     </div>
   </footer>
 
+    <!-- 13. FLOATING FLASH SALE COUNTDOWN PILL (LUÔN NỔI TRÊN MÀN HÌNH RÕ RÀNG TRỰC QUAN) -->
+  <aside aria-label="Đồng hồ đếm ngược ưu đãi luôn nổi" class="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 max-w-[calc(100%-92px)] sm:max-w-none">
+    <a href="#dat-hang" class="flex items-center gap-2 sm:gap-3 px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#07131D]/95 backdrop-blur-md border-2 border-goldBright shadow-2xl hover:scale-105 transition-all text-white group gold-glow-pulse" title="Bấm để nhận ngay ưu đãi 369K">
+      <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping shrink-0"></span>
+      <span class="text-xs sm:text-sm font-bold whitespace-nowrap text-slate-100 hidden sm:inline">Ưu đãi kết thúc sau:</span>
+      <span class="text-xs font-bold text-slate-100 sm:hidden">Ưu đãi còn:</span>
+      <div class="flex items-center gap-1 text-goldBright font-mono font-black text-xs sm:text-base tracking-wider whitespace-nowrap">
+        <span class="countdown-hours">07</span> h : <span class="countdown-minutes">04</span> m : <span class="countdown-seconds">24</span> s
+      </div>
+      <span class="hidden md:inline-flex items-center gap-1 bg-gradient-to-r from-goldBright to-goldDark text-navy text-[11px] font-black px-2.5 py-1 rounded-full uppercase ml-1 shadow">
+        Đặt Ngay ➔
+      </span>
+    </a>
+  </aside>
+
   <!-- 14. FLOATING ZALO CONTACT BUTTON (BOTTOM RIGHT) -->
   <aside aria-label="Kênh hỗ trợ nổi" class="fixed bottom-6 right-6 z-40">
     <a href="https://zalo.me/0918257209" target="_blank" rel="noopener" class="flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm shadow-2xl transition-all transform hover:scale-105 border border-white/20 gold-glow-pulse">
@@ -1217,24 +1233,30 @@
 
   <!-- 17. JAVASCRIPT CONTROLLERS -->
   <script>
-    // Countdown Timer (7 hours flash sale)
+    // Countdown Timer (Đồng bộ toàn bộ các đồng hồ đếm ngược nổi và tại chỗ: 07h : 04m : 24s)
     (function initCountdown() {
-      let totalSeconds = 7 * 3600 + 15 * 60 + 42;
-      const hoursEl = document.getElementById('hours');
-      const minutesEl = document.getElementById('minutes');
-      const secondsEl = document.getElementById('seconds');
+      let totalSeconds = 7 * 3600 + 4 * 60 + 24;
 
-      setInterval(() => {
-        if (totalSeconds > 0) {
-          totalSeconds--;
-          const h = Math.floor(totalSeconds / 3600);
-          const m = Math.floor((totalSeconds % 3600) / 60);
-          const s = totalSeconds % 60;
-          if (hoursEl) hoursEl.textContent = String(h).padStart(2, '0');
-          if (minutesEl) minutesEl.textContent = String(m).padStart(2, '0');
-          if (secondsEl) secondsEl.textContent = String(s).padStart(2, '0');
-        }
-      }, 1000);
+      function updateTimers() {
+        if (totalSeconds > 0) totalSeconds--;
+        const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(totalSeconds % 60).padStart(2, '0');
+
+        document.querySelectorAll('.countdown-hours').forEach(el => el.textContent = h);
+        document.querySelectorAll('.countdown-minutes').forEach(el => el.textContent = m);
+        document.querySelectorAll('.countdown-seconds').forEach(el => el.textContent = s);
+
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        if (hoursEl) hoursEl.textContent = h;
+        if (minutesEl) minutesEl.textContent = m;
+        if (secondsEl) secondsEl.textContent = s;
+      }
+
+      setInterval(updateTimers, 1000);
+      updateTimers();
     })();
 
     // Hero Video Sound Toggle
