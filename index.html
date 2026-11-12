@@ -1153,13 +1153,17 @@
         <div class="flex items-center justify-between">
           <span class="text-slate-400">Số tài khoản:</span>
           <div class="flex items-center gap-1.5">
-            <span class="font-mono font-bold text-goldBright text-sm" id="stk-val">104870570776</span>
-            <button onclick="copyText('104870570776', 'Đã chép STK!')" class="text-[10px] bg-gold/20 hover:bg-gold/30 text-goldBright px-1.5 py-0.5 rounded font-bold">Chép</button>
+            <span class="font-mono font-bold text-goldBright text-sm" id="stk-val">100888653388</span>
+            <button onclick="copyText('100888653388', 'Đã chép STK!')" class="text-[10px] bg-gold/20 hover:bg-gold/30 text-goldBright px-1.5 py-0.5 rounded font-bold">Chép</button>
           </div>
         </div>
         <div class="flex items-center justify-between">
           <span class="text-slate-400">Chủ tài khoản:</span>
-          <span class="font-bold text-white">NGUYEN TIEN KHANH</span>
+          <span class="font-bold text-white uppercase">HO KINH DOANH TIENKHANH ACADEMY</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-slate-400">Chi nhánh:</span>
+          <span class="font-medium text-slate-200">VietinBank - CN 7 - TP HCM - HOI SO</span>
         </div>
         <div class="flex items-center justify-between">
           <span class="text-slate-400">Số tiền:</span>
@@ -1168,7 +1172,7 @@
         <div class="flex items-center justify-between">
           <span class="text-slate-400">Nội dung CK:</span>
           <div class="flex items-center gap-1.5">
-            <span class="font-mono font-bold text-goldBright text-sm" id="content-val">MV_AI</span>
+            <span class="font-mono font-bold text-goldBright text-sm" id="content-val">MVcanhac</span>
             <button onclick="copyContent()" class="text-[10px] bg-gold/20 hover:bg-gold/30 text-goldBright px-1.5 py-0.5 rounded font-bold">Chép</button>
           </div>
         </div>
@@ -1307,10 +1311,9 @@
       const email = emailEl ? emailEl.value.trim() : '';
       const note = noteEl ? noteEl.value.trim() : '';
 
-      // Clean phone number or generate random unique code
+      // Clean phone number or default to MVcanhac (matching official VietQR)
       const cleanPhone = phone.replace(/[^0-9]/g, '').slice(-9);
-      const randomCode = Math.floor(1000 + Math.random() * 9000);
-      const transferContent = 'MV_' + (cleanPhone ? cleanPhone : randomCode);
+      const transferContent = cleanPhone ? ('MVcanhac ' + cleanPhone) : 'MVcanhac';
 
       // Update text in dialog
       const contentValEl = document.getElementById('content-val');
@@ -1318,9 +1321,9 @@
         contentValEl.textContent = transferContent;
       }
 
-      // Generate VietQR API image URL dynamically
+      // Generate VietQR API image URL dynamically with business account
       const qrImage = document.getElementById('qr-image');
-      const vietqrApi = `https://img.vietqr.io/image/vietinbank-104870570776-compact2.png?amount=369000&addInfo=${encodeURIComponent(transferContent)}&accountName=NGUYEN%20TIEN%20KHANH`;
+      const vietqrApi = `https://img.vietqr.io/image/vietinbank-100888653388-compact2.png?amount=369000&addInfo=${encodeURIComponent(transferContent)}&accountName=${encodeURIComponent('HO KINH DOANH TIENKHANH ACADEMY')}`;
 
       if (qrImage) {
         qrImage.src = vietqrApi;
