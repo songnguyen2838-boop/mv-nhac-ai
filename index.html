@@ -784,45 +784,49 @@
             <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 uppercase">
               Thông Tin Nhận Tool &amp; Chatbot MV
             </h2>
-            <p class="text-xs sm:text-sm text-slate-300 mt-2">
-              Vui lòng điền thông tin chính xác để hệ thống gửi liên kết cài đặt Tool và hướng dẫn sử dụng cho bạn.
+            <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl mx-auto">
+              Điền thông tin để nhận hỗ trợ nhanh hơn, hoặc <strong class="text-goldBright">bấm nút quét mã bên dưới để thanh toán ngay</strong> (không bắt buộc điền form).
             </p>
           </div>
 
-          <!-- Order Form -->
+          <!-- Order Form (Không bắt buộc điền, bấm là quét mã được ngay) -->
           <form id="order-form" onsubmit="handleOrderSubmit(event)" class="space-y-5">
             <div>
-              <label for="fullname" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
-                Họ và Tên của bạn <span class="text-red-400">*</span>
+              <label for="fullname" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5 flex items-center justify-between">
+                <span>Họ và Tên của bạn</span>
+                <span class="text-slate-400 font-normal text-xs">(Tùy chọn)</span>
               </label>
-              <input type="text" id="fullname" name="fullname" required placeholder="Ví dụ: Nguyễn Văn An"
-                class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+              <input type="text" id="fullname" name="fullname" placeholder="Ví dụ: Nguyễn Văn An (có thể để trống)"
+                class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-400 focus:outline-none focus:border-goldBright transition text-base sm:text-sm">
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="phone" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
-                  Số điện thoại / Zalo <span class="text-red-400">*</span>
+                <label for="phone" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5 flex items-center justify-between">
+                  <span>Số điện thoại / Zalo</span>
+                  <span class="text-slate-400 font-normal text-xs">(Tùy chọn)</span>
                 </label>
-                <input type="tel" id="phone" name="phone" required placeholder="Ví dụ: 0912345678"
-                  class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+                <input type="tel" id="phone" name="phone" placeholder="Ví dụ: 0912345678 (có thể để trống)"
+                  class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-400 focus:outline-none focus:border-goldBright transition text-base sm:text-sm">
               </div>
 
               <div>
-                <label for="email" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
-                  Email nhận tài liệu &amp; Tool <span class="text-red-400">*</span>
+                <label for="email" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5 flex items-center justify-between">
+                  <span>Email nhận tài liệu &amp; Tool</span>
+                  <span class="text-slate-400 font-normal text-xs">(Tùy chọn)</span>
                 </label>
-                <input type="email" id="email" name="email" required placeholder="email@gmail.com"
-                  class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+                <input type="email" id="email" name="email" placeholder="email@gmail.com (có thể để trống)"
+                  class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-400 focus:outline-none focus:border-goldBright transition text-base sm:text-sm">
               </div>
             </div>
 
             <div>
-              <label for="note" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5">
-                Ghi chú thêm (không bắt buộc)
+              <label for="note" class="block text-xs sm:text-sm font-bold text-slate-200 mb-1.5 flex items-center justify-between">
+                <span>Ghi chú thêm</span>
+                <span class="text-slate-400 font-normal text-xs">(Không bắt buộc)</span>
               </label>
               <input type="text" id="note" name="note" placeholder="Ví dụ: Tôi muốn hỏi thêm về cách làm nhạc AI..."
-                class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-500 focus:outline-none focus:border-goldBright transition text-sm">
+                class="w-full px-4 py-3 rounded-xl bg-navy/90 border border-gold/30 text-white placeholder-slate-400 focus:outline-none focus:border-goldBright transition text-base sm:text-sm">
             </div>
 
             <!-- Total Price Summary in Form -->
@@ -837,10 +841,17 @@
               </div>
             </div>
 
-            <button type="submit" class="btn-gold w-full py-4 rounded-xl text-base sm:text-lg font-black tracking-wide gold-glow-pulse">
-              <span>Xác Nhận &amp; Tạo Mã VietQR Thanh Toán</span>
+            <button type="submit" class="btn-gold w-full py-4 rounded-xl text-base sm:text-lg font-black tracking-wide gold-glow-pulse flex items-center justify-center gap-2">
+              <span>⚡ Quét Mã VietQR Thanh Toán Ngay (369K)</span>
               <span>➔</span>
             </button>
+
+            <!-- 1-Click Direct Scan (Zero input needed) -->
+            <div class="text-center pt-1">
+              <button type="button" onclick="openDirectQR()" class="text-xs sm:text-sm text-goldBright hover:underline font-bold inline-flex items-center gap-1.5 py-1">
+                <span>📲 Bấm vào đây để mở mã QR chuyển khoản trực tiếp (Không cần điền gì) ➔</span>
+              </button>
+            </div>
           </form>
 
           <div class="mt-4 text-center">
@@ -1031,7 +1042,7 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500 text-[11px] gap-2">
-        <p>© 2026 TIENKHANH.ACADEMY · Video AI &amp; Vibe Coding · Toàn quyền bảo lưu.</p>
+        <p>© 2026 TIENKHANH.ACADEMY · Video AI &amp; Vibe Coding · Toàn quyền bảo lưu. <span class="opacity-60 text-[10px] cursor-pointer hover:text-goldBright" onclick="openSheetModal()" title="Cấu hình Google Sheet (Ctrl+Shift+S)">[⚙ Quản Lý Sheet]</span></p>
         <p>Google Flow là nhãn hiệu của Google LLC. Tool là giải pháp tiện ích hỗ trợ người dùng tự động hóa thao tác.</p>
       </div>
     </div>
@@ -1045,6 +1056,69 @@
       <span class="sm:hidden font-extrabold flex items-center gap-1">💬 Zalo</span>
     </a>
   </aside>
+
+    <!-- 16. MODAL QUẢN LÝ KẾT NỐI GOOGLE SHEETS (Dành cho Tiến Khanh: Ctrl + Shift + S hoặc nhấp đúp chân trang) -->
+  <dialog id="sheetModal" class="rounded-3xl p-0 max-w-xl w-[calc(100%-32px)] backdrop:bg-black/85 backdrop:backdrop-blur-md border-2 border-gold shadow-2xl overflow-hidden bg-[#07131D] text-white">
+    <div class="p-6 sm:p-8">
+      <div class="flex items-center justify-between pb-4 border-b border-gold/30 mb-5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gold/15 border border-gold/40 text-goldBright flex items-center justify-center text-xl">
+            📊
+          </div>
+          <div>
+            <h3 class="text-lg font-black text-white">Cấu Hình Kết Nối Google Sheet</h3>
+            <p class="text-xs text-slate-300">Tự động gom SĐT & thông tin đơn hàng của khách khi bấm quét mã</p>
+          </div>
+        </div>
+        <button onclick="closeSheetModal()" class="w-8 h-8 rounded-full bg-gold/10 hover:bg-gold/20 text-goldBright border border-gold/40 flex items-center justify-center font-bold text-lg transition">
+          ✕
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-goldBright uppercase mb-1.5">
+            Đường dẫn Google Apps Script Web App URL:
+          </label>
+          <input id="inputSheetUrl" type="url" placeholder="https://script.google.com/macros/s/AKfycb.../exec" class="w-full px-4 py-3 rounded-xl border border-gold/40 bg-[#050D18] text-white text-xs font-mono focus:outline-none focus:border-goldBright">
+          <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+            💡 Dán URL Web App Google Sheet của bạn để tự động lưu dữ liệu khách hàng.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 pt-1">
+          <button onclick="saveSheetUrl()" class="btn-gold px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 shadow-md">
+            <span>💾</span> <span>Lưu Kết Nối</span>
+          </button>
+          <button onclick="sendTestLeadToSheet()" class="px-4 py-2.5 rounded-xl bg-emerald-600/25 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/50 font-bold text-xs flex items-center gap-1.5 transition shadow-sm">
+            <span>🚀</span> <span>Gửi Thử 1 Đơn Lên Sheet</span>
+          </button>
+          <button onclick="clearSavedLeads()" class="px-3.5 py-2.5 rounded-xl bg-red-600/20 hover:bg-red-600/30 text-rose-300 border border-rose-500/30 font-semibold text-xs transition">
+            Xóa danh sách tạm
+          </button>
+        </div>
+
+        <div id="sheetStatusMsg" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+
+        <div class="pt-4 border-t border-gold/25">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-white uppercase text-[11px] flex items-center gap-1.5">
+              <span>👥</span> <span>Danh sách đơn gần nhất (Bộ nhớ máy):</span>
+            </span>
+            <span id="savedLeadsCount" class="bg-gold/20 text-goldBright border border-gold/40 px-2.5 py-0.5 rounded-full text-[10px] font-bold">0 đơn</span>
+          </div>
+          <div id="savedLeadsList" class="max-h-40 overflow-y-auto space-y-2 pr-1 text-[11px]">
+            <!-- Render danh sách khách điền form -->
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-gold/20 flex items-center justify-between text-[11px] text-slate-400">
+          <span>Phím tắt quản lý: <strong class="text-white">Ctrl + Shift + S</strong></span>
+          <button onclick="closeSheetModal()" class="text-goldBright hover:underline font-bold">Xong &amp; Đóng</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
   <!-- 15. MODAL 1: AUTOMATIC VIETQR PAYMENT DIALOG -->
   <dialog id="vietqr-dialog" class="backdrop:bg-black/80 bg-transparent p-4 max-w-lg w-full outline-none">
@@ -1205,16 +1279,38 @@
     // Modal VietQR Controller & Order Submit
     const vietqrDialog = document.getElementById('vietqr-dialog');
 
-    function handleOrderSubmit(event) {
-      event.preventDefault();
-      const fullname = document.getElementById('fullname').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const note = document.getElementById('note').value.trim();
+    // CẤU HÌNH TỰ ĐỘNG ĐỒNG BỘ ĐƠN HÀNG VÀO GOOGLE SHEETS
+    // =========================================================================
+    let GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9e10PGGd2ErPMV5ZbRT241hf-GDsg09N1S1efo-LSO0ubJoFVEK0isWFCvyJABeik/exec";
 
-      // Clean phone number for transfer syntax
-      const cleanPhone = phone.replace(/[^0-9]/g, '');
-      const transferContent = 'MV_' + (cleanPhone ? cleanPhone : 'CANHAC');
+    function getActiveSheetUrl() {
+      return (GOOGLE_SHEET_WEB_APP_URL && GOOGLE_SHEET_WEB_APP_URL.trim() !== "")
+        ? GOOGLE_SHEET_WEB_APP_URL.trim()
+        : (localStorage.getItem('tienkhanh_google_sheet_url') || "").trim();
+    }
+
+    // Xử lý mở mã VietQR (Không cần điền form vẫn quét được ngay)
+    function openDirectQR() {
+      handleOrderSubmit(null);
+    }
+
+    function handleOrderSubmit(event) {
+      if (event) event.preventDefault();
+
+      const fullnameEl = document.getElementById('fullname');
+      const phoneEl = document.getElementById('phone');
+      const emailEl = document.getElementById('email');
+      const noteEl = document.getElementById('note');
+
+      const fullname = fullnameEl ? fullnameEl.value.trim() : '';
+      const phone = phoneEl ? phoneEl.value.trim() : '';
+      const email = emailEl ? emailEl.value.trim() : '';
+      const note = noteEl ? noteEl.value.trim() : '';
+
+      // Clean phone number or generate random unique code
+      const cleanPhone = phone.replace(/[^0-9]/g, '').slice(-9);
+      const randomCode = Math.floor(1000 + Math.random() * 9000);
+      const transferContent = 'MV_' + (cleanPhone ? cleanPhone : randomCode);
 
       // Update text in dialog
       const contentValEl = document.getElementById('content-val');
@@ -1228,7 +1324,6 @@
 
       if (qrImage) {
         qrImage.src = vietqrApi;
-        // Fallback to local image if offline
         qrImage.onerror = function() {
           this.src = 'assets/qr-thanh-toan-vietinbank.png';
         };
@@ -1237,21 +1332,177 @@
       // Update Zalo confirmation link with pre-filled message
       const zaloBtn = document.getElementById('btn-zalo-confirm');
       if (zaloBtn) {
-        const zaloMsg = encodeURIComponent(`Chào bạn, tôi là ${fullname} (${phone}), tôi vừa chuyển khoản 369.000đ mua Combo Tool Flow + Chatbot MV với nội dung: ${transferContent}. Nhờ bạn kích hoạt Tool giúp tôi qua email: ${email}`);
+        const displayName = fullname || 'Khách hàng';
+        const displayPhone = phone || 'Chưa cung cấp SĐT';
+        const emailPart = email ? ` qua email: ${email}` : '';
+        const zaloMsg = encodeURIComponent(`Chào bạn, tôi vừa chuyển khoản 369.000đ mua Combo Tool Flow + Chatbot MV với nội dung: ${transferContent} (Tên: ${displayName}, SĐT: ${displayPhone}). Nhờ bạn kích hoạt Tool giúp tôi${emailPart}!`);
         zaloBtn.href = `https://zalo.me/0918257209?text=${zaloMsg}`;
       }
 
-      // Save lead to localStorage
-      try {
-        const orderData = { fullname, phone, email, note, amount: 369000, content: transferContent, date: new Date().toISOString() };
-        localStorage.setItem('last_order_tienkhanh_ai', JSON.stringify(orderData));
-      } catch (e) {}
+      // Chuẩn bị dữ liệu đơn hàng
+      const orderData = {
+        fullName: fullname || "Khách quét mã trực tiếp",
+        phoneZalo: phone || "Chưa điền",
+        phone: phone || "Chưa điền",
+        email: email || "Chưa điền",
+        notes: note || "Đơn hàng từ Landing Page MV Nhạc AI",
+        totalAmount: 369000,
+        memo: transferContent,
+        submittedAt: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })
+      };
 
-      // Show Dialog
+      // 1. Lưu dự phòng cục bộ vào LocalStorage
+      saveLeadLocally(orderData);
+
+      // 2. TỰ ĐỘNG GỬI SANG GOOGLE SHEETS BẤT ĐỒNG BỘ
+      const sheetUrl = getActiveSheetUrl();
+      if (sheetUrl && sheetUrl.startsWith('http')) {
+        console.log('🔄 Đang gửi dữ liệu đơn hàng lên Google Sheet:', sheetUrl);
+        fetch(sheetUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderData)
+        }).then(() => {
+          console.log('✅ Đã đồng bộ số điện thoại/đơn hàng lên Google Sheets thành công!');
+        }).catch((err) => {
+          console.error('❌ Lỗi khi gửi dữ liệu sang Google Sheet:', err);
+        });
+      } else {
+        console.warn('⚠️ Chưa cấu hình Web App URL Google Sheet. Dữ liệu đã lưu an toàn trong máy.');
+      }
+
+      // 3. Hiển thị Dialog VietQR cho khách quét ngay
       if (vietqrDialog) {
         vietqrDialog.showModal();
       }
     }
+
+    // Các hàm quản lý Local Leads & Google Sheet
+    function saveLeadLocally(lead) {
+      try {
+        let leads = JSON.parse(localStorage.getItem('tienkhanh_mv_leads') || '[]');
+        leads.unshift(lead);
+        if (leads.length > 50) leads = leads.slice(0, 50);
+        localStorage.setItem('tienkhanh_mv_leads', JSON.stringify(leads));
+        renderSavedLeads();
+      } catch (e) {}
+    }
+
+    function renderSavedLeads() {
+      try {
+        const leads = JSON.parse(localStorage.getItem('tienkhanh_mv_leads') || '[]');
+        const countEl = document.getElementById('savedLeadsCount');
+        const listEl = document.getElementById('savedLeadsList');
+        if (countEl) countEl.textContent = `${leads.length} đơn`;
+        if (listEl) {
+          if (leads.length === 0) {
+            listEl.innerHTML = '<p class="text-slate-400 italic">Chưa có đơn nào được lưu trên máy này.</p>';
+          } else {
+            listEl.innerHTML = leads.map(l => `
+              <div class="p-2 rounded-lg bg-navy/60 border border-gold/20 flex items-center justify-between">
+                <div>
+                  <strong class="text-white">${l.fullName}</strong> (${l.phoneZalo})
+                  <div class="text-[10px] text-goldBright">${l.memo} • ${l.submittedAt}</div>
+                </div>
+                <span class="text-emerald-400 font-bold">369K</span>
+              </div>
+            `).join('');
+          }
+        }
+      } catch (e) {}
+    }
+
+    function clearSavedLeads() {
+      if (confirm('Bạn có chắc muốn xóa danh sách đơn tạm trên máy này?')) {
+        localStorage.removeItem('tienkhanh_mv_leads');
+        renderSavedLeads();
+        showSheetStatus('Đã dọn dẹp danh sách tạm trên máy này.', 'bg-white/10 text-slate-300 border border-white/20');
+      }
+    }
+
+    function openSheetModal() {
+      const modal = document.getElementById('sheetModal');
+      const input = document.getElementById('inputSheetUrl');
+      if (input) input.value = getActiveSheetUrl();
+      renderSavedLeads();
+      if (modal) modal.showModal();
+    }
+
+    function closeSheetModal() {
+      const modal = document.getElementById('sheetModal');
+      if (modal) modal.close();
+    }
+
+    function saveSheetUrl() {
+      const input = document.getElementById('inputSheetUrl');
+      const url = input ? input.value.trim() : '';
+      if (!url) {
+        localStorage.removeItem('tienkhanh_google_sheet_url');
+        showSheetStatus('⚠️ Đã xóa URL kết nối Google Sheet.', 'bg-amber-900/40 text-amber-300 border border-amber-600/50');
+        return;
+      }
+      if (!url.startsWith('https://script.google.com/macros/s/')) {
+        showSheetStatus('❌ URL không hợp lệ! Vui lòng dùng link Web App của Google Script (bắt đầu bằng https://script.google.com/macros/s/...)', 'bg-red-900/50 text-rose-300 border border-rose-600/50');
+        return;
+      }
+      localStorage.setItem('tienkhanh_google_sheet_url', url);
+      GOOGLE_SHEET_WEB_APP_URL = url;
+      showSheetStatus('✅ Đã lưu kết nối Google Sheet thành công! Dữ liệu sẽ tự động đồng bộ mỗi khi khách tạo mã.', 'bg-emerald-900/50 text-emerald-300 border border-emerald-500/50');
+    }
+
+    function sendTestLeadToSheet() {
+      const sheetUrl = getActiveSheetUrl();
+      if (!sheetUrl || !sheetUrl.startsWith('http')) {
+        showSheetStatus('⚠️ Chưa có URL Google Sheet!', 'bg-amber-900/40 text-amber-300 border border-amber-600/50');
+        return;
+      }
+      showSheetStatus('⏳ Đang gửi đơn thử nghiệm sang Google Sheet...', 'bg-blue-900/40 text-blue-300 border border-blue-600/50');
+      const testLead = {
+        fullName: "Đơn Thử Nghiệm",
+        phoneZalo: "0900000000",
+        phone: "0900000000",
+        email: "test@gmail.com",
+        notes: "Đơn test kết nối Google Sheets từ Landing Page MV Nhạc AI",
+        totalAmount: 369000,
+        memo: "TEST_MV_SHEET",
+        submittedAt: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })
+      };
+      fetch(sheetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(testLead)
+      }).then(() => {
+        saveLeadLocally(testLead);
+        showSheetStatus('🎉 THÀNH CÔNG! Đã gửi đơn thử nghiệm lên Google Sheet. Bạn hãy mở Bảng tính ra kiểm tra!', 'bg-emerald-900/60 text-emerald-300 border border-emerald-400');
+      }).catch(err => {
+        showSheetStatus('❌ Lỗi khi gửi: ' + err.toString(), 'bg-red-900/40 text-rose-300 border border-rose-600/50');
+      });
+    }
+
+    function showSheetStatus(msg, classes) {
+      const statusEl = document.getElementById('sheetStatusMsg');
+      if (statusEl) {
+        statusEl.className = 'p-3 rounded-xl text-xs font-semibold ' + classes;
+        statusEl.innerHTML = msg;
+        statusEl.classList.remove('hidden');
+      }
+    }
+
+    // Phím tắt Ctrl + Shift + S để mở modal quản lý Google Sheet
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 's')) {
+        e.preventDefault();
+        openSheetModal();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSavedLeads();
+    });
 
     function closeVietQRDialog() {
       if (vietqrDialog) {
